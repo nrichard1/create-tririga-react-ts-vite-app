@@ -1,4 +1,4 @@
-node index.js test-app// Custom type for import.meta.env to satisfy TS if not fully typed
+// Custom type for import.meta.env to satisfy TS if not fully typed
 /// <reference types="vite/client" />
 
 import { setTriAppConfig, getTriAppConfig, TriAppConfig } from '@tririga/tririga-react-components';
