@@ -1,4 +1,4 @@
-# create-pb-tririga-react-app
+# create-tririga-react-ts-vite-app
 
 A CLI tool to scaffold modern TRIRIGA UX applications using React, TypeScript, and Vite.
 
@@ -7,7 +7,7 @@ A CLI tool to scaffold modern TRIRIGA UX applications using React, TypeScript, a
 You don't need to install this package locally. You can run it directly using `npx` and replace `my-tririga-app` with your desired app name:
 
 ```bash
-npx create-pb-tririga-react-app my-tririga-app
+npx create-tririga-react-ts-vite-app my-tririga-app
 ```
 
 ## Features
