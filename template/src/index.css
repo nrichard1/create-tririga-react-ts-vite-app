@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+:root {
+  --background: #fdfdff;
+  --foreground: #0d0d12;
+  --card: #ffffff;
+  --card-foreground: #0d0d12;
+  --popover: #ffffff;
+  --popover-foreground: #0d0d12;
+  --primary: #0f62fe;
+  --primary-foreground: #ffffff;
+  --secondary: #edebff;
+  --secondary-foreground: #483d8b;
+  --muted: #f1f1f8;
+  --muted-foreground: #62627a;
+  --accent: #f0f2ff;
+  --accent-foreground: #6b46ff;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+  --border: #e2e2ee;
+  --input: #e2e2ee;
+  --ring: #0f62fe;
+  --chart-1: #0f62fe;
+  --chart-2: #8a3ffc;
+  --chart-3: #1192e8;
+  --chart-4: #0043ce;
+  --chart-5: #002d9c;
+  --radius: 0.5rem;
+}

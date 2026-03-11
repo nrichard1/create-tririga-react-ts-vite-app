@@ -1,0 +1,9 @@
+{
+  "instanceId": "-1",
+  "tririgaUrl": "http://localhost:8001",
+  "contextPath": "/app",
+  "modelAndView": "devView",
+  "appPath": "/app/devView",
+  "appExposedName": "devView",
+  "sso": false
+}

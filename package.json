@@ -1,0 +1,22 @@
+{
+  "name": "create-tririga-react-ts-vite-app",
+  "version": "1.0.0",
+  "description": "Scaffold a TRIRIGA React app with Vite and TypeScript",
+  "main": "index.js",
+  "bin": {
+    "create-tririga-react-ts-vite-app": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "template",
+    "README.md"
+  ],
+  "keywords": [
+    "tririga",
+    "react",
+    "vite",
+    "scaffold"
+  ],
+  "author": "Noah Richard",
+  "license": "ISC"
+}
