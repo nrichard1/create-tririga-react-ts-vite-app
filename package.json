@@ -1,6 +1,6 @@
 {
   "name": "create-tririga-react-ts-vite-app",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Scaffold a TRIRIGA React app with Vite and TypeScript",
   "main": "index.js",
   "bin": {
