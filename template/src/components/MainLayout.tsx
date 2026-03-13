@@ -48,7 +48,7 @@ const MainLayout: React.FC = () => {
       <header className="sticky top-0 z-50 flex items-center justify-between px-4 sm:px-6 h-12 bg-[#161616]">
         <Link to="/" className="no-underline flex items-center gap-2">
           <span className="font-semibold text-white/65 text-base">TRIRIGA</span>
-          <span className="text-white text-base truncate max-w-[120px] sm:max-w-none">React App</span>
+          <span className="text-white text-base truncate max-w-[200px] sm:max-w-none">React App</span>
         </Link>
 
         {/* Desktop Action Buttons */}
