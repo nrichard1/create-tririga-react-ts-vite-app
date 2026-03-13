@@ -8,18 +8,18 @@ import { Label } from '@/components/ui/label';
 function HomePage() {
   return (
     <div className="max-w-5xl mx-auto py-8">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold mb-2">Welcome to your new TRIRIGA React App</h1>
           <p className="text-muted-foreground">
             This is a template application using React, Vite, TypeScript, and shadcn/ui.
           </p>
         </div>
-        <Badge variant="secondary" className="text-sm">Ready to build</Badge>
+        <Badge variant="secondary" className="text-sm shrink-0">Ready to build</Badge>
       </div>
 
       <Tabs defaultValue="components" className="w-full">
-        <TabsList className="mb-4">
+        <TabsList className="mb-4 flex-wrap h-auto justify-start">
           <TabsTrigger value="components">UI Components</TabsTrigger>
           <TabsTrigger value="forms">Forms & Inputs</TabsTrigger>
         </TabsList>
@@ -31,7 +31,7 @@ function HomePage() {
                 <CardTitle>Cards & Buttons</CardTitle>
                 <CardDescription>Shadcn UI provides beautiful default styling.</CardDescription>
               </CardHeader>
-              <CardContent className="flex gap-4">
+              <CardContent className="flex flex-wrap gap-4">
                 <Button variant="default">Default</Button>
                 <Button variant="secondary">Secondary</Button>
                 <Button variant="outline">Outline</Button>
@@ -50,7 +50,7 @@ function HomePage() {
               <CardContent className="space-y-2">
                 <div className="text-lg font-semibold">Heading Example</div>
                 <div className="text-sm text-muted-foreground">
-                  The IBM Carbon theme is adapted for a seamless experience inside TRIRIGA.
+                  A beautiful, functional theme out-of-the-box that adapts to light and dark modes.
                 </div>
               </CardContent>
             </Card>

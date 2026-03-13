@@ -79,7 +79,6 @@ async function configureApp() {
   const triUrl = await askQuestion('TRIRIGA Environment URL (e.g., https://your-tririga-server.com): ');
   const triUser = await askQuestion('TRIRIGA Username: ');
   const triPassword = await askQuestion('TRIRIGA Password: ', true);
-  const appTitle = await askQuestion('App Title (e.g., TRIRIGA Service Request): ');
   const appExposedName = await askQuestion('Application Exposed Name (e.g., myTririgaApp): ');
   const modelAndView = await askQuestion('Model and View Name (e.g., myTririgaApp): ');
   const webViewMetadataName = await askQuestion(`Web View Metadata Exposed Name (default: ${projectName}): `);
@@ -121,14 +120,6 @@ async function configureApp() {
     // Regex matches the whole base line and replaces it, handling single or double quotes
     viteContent = viteContent.replace(/base:\s*['"]\/app\/[^/]+\/['"],/, `base: '/app/${appExposedName}/',`);
     fs.writeFileSync(viteConfigPath, viteContent);
-  }
-
-  // 8. Update index.html Title
-  const indexHtmlPath = path.join(projectDir, 'index.html');
-  if (fs.existsSync(indexHtmlPath) && appTitle) {
-    let htmlContent = fs.readFileSync(indexHtmlPath, 'utf8');
-    htmlContent = htmlContent.replace(/<title>.*<\/title>/, `<title>${appTitle}</title>`);
-    fs.writeFileSync(indexHtmlPath, htmlContent);
   }
 
   console.log(`\nSuccess! Created and configured ${projectName}.`);
