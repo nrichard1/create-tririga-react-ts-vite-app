@@ -96,6 +96,8 @@ async function configureApp() {
   const envPath = path.join(projectDir, '.env');
   if (fs.existsSync(envExamplePath)) {
     let envContent = fs.readFileSync(envExamplePath, 'utf8');
+    envContent = envContent.replace(/VITE_TRIRIGA_PROXY_TARGET=.*/g, `VITE_TRIRIGA_PROXY_TARGET=${triUrl}`);
+    envContent = envContent.replace(/VITE_MODEL_AND_VIEW=.*/g, `VITE_MODEL_AND_VIEW=${modelAndView}`);
     envContent = envContent.replace(/TRI_URL=.*/g, `TRI_URL=${triUrl}`);
     envContent = envContent.replace(/TRI_USER=.*/g, `TRI_USER=${triUser}`);
     envContent = envContent.replace(/TRI_PASSWORD=.*/g, `TRI_PASSWORD=${triPassword}`);
@@ -108,22 +110,31 @@ async function configureApp() {
   const tririgaServicePath = path.join(projectDir, 'src', 'services', 'tririgaService.ts');
   if (fs.existsSync(tririgaServicePath)) {
     let tsContent = fs.readFileSync(tririgaServicePath, 'utf8');
+    // Update production config values
     tsContent = tsContent.replace(/modelAndView:\s*"[^"]*"/, `modelAndView: "${modelAndView}"`);
     tsContent = tsContent.replace(/appExposedName:\s*"[^"]*"/, `appExposedName: "${appExposedName}"`);
+    // Update dev config fallback values
+    tsContent = tsContent.replace(/\|\| 'appName'/g, `|| '${appExposedName}'`);
+    tsContent = tsContent.replace(/\/app\/appName\//g, `/app/${appExposedName}/`);
     fs.writeFileSync(tririgaServicePath, tsContent);
   }
 
-  // 7. Update vite.config.ts base path
+  // 7. Update vite.config.ts base path and proxy target
   const viteConfigPath = path.join(projectDir, 'vite.config.ts');
   if (fs.existsSync(viteConfigPath)) {
     let viteContent = fs.readFileSync(viteConfigPath, 'utf8');
-    // Regex matches the whole base line and replaces it, handling single or double quotes
+    // Update base path
     viteContent = viteContent.replace(/base:\s*['"]\/app\/[^/]+\/['"],/, `base: '/app/${appExposedName}/',`);
+    // Update default proxy target
+    viteContent = viteContent.replace(
+      /const tririgaTarget = process\.env\.VITE_TRIRIGA_PROXY_TARGET \|\| '[^']*'/,
+      `const tririgaTarget = process.env.VITE_TRIRIGA_PROXY_TARGET || '${triUrl}'`
+    );
     fs.writeFileSync(viteConfigPath, viteContent);
   }
 
   console.log(`\nSuccess! Created and configured ${projectName}.`);
-  console.log(`\nTo get started:\n  cd ${projectName}\n  npm install -g pnpm\n  pnpm install\n  pnpm run build:deploy\n`);
+  console.log(`\nTo get started:\n  cd ${projectName}\n  npm install -g pnpm\n  pnpm install\n  pnpm run dev          # Local dev server with TRIRIGA API proxy\n  pnpm run build:deploy  # Build and deploy to TRIRIGA\n`);
 }
 
 configureApp();

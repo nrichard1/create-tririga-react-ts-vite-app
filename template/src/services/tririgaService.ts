@@ -8,11 +8,11 @@ export async function initTriAppConfig(): Promise<TriAppConfig> {
   if (import.meta.env.DEV) {
     const config: TriAppConfig = {
       instanceId: import.meta.env.VITE_INSTANCE_ID || '-1',
-      tririgaUrl: import.meta.env.VITE_TRIRIGA_URL || 'http://localhost:8001',
-      contextPath: import.meta.env.VITE_CONTEXT_PATH || '/dev',
-      modelAndView: import.meta.env.VITE_MODEL_AND_VIEW || 'unknown',
-      appPath: import.meta.env.VITE_BASE_PATH,
-      appExposedName: import.meta.env.VITE_EXPOSED_NAME,
+      tririgaUrl: import.meta.env.VITE_TRIRIGA_URL || window.location.origin,
+      contextPath: import.meta.env.VITE_CONTEXT_PATH ?? '',
+      modelAndView: import.meta.env.VITE_MODEL_AND_VIEW || 'appName',
+      appPath: import.meta.env.VITE_BASE_PATH || '/app/appName/',
+      appExposedName: import.meta.env.VITE_EXPOSED_NAME || 'appName',
       sso: String(import.meta.env.VITE_SSO).toLowerCase() === 'true',
     };
     setTriAppConfig(config);
