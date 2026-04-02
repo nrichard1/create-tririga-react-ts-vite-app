@@ -119,12 +119,12 @@ async function configureApp() {
     fs.writeFileSync(tririgaServicePath, tsContent);
   }
 
-  // 7. Update vite.config.ts base path and proxy target
+  // 7. Update vite.config.ts base path, appBase, and proxy target
   const viteConfigPath = path.join(projectDir, 'vite.config.ts');
   if (fs.existsSync(viteConfigPath)) {
     let viteContent = fs.readFileSync(viteConfigPath, 'utf8');
-    // Update base path
-    viteContent = viteContent.replace(/base:\s*['"]\/app\/[^/]+\/['"],/, `base: '/app/${appExposedName}/',`);
+    // Update base path and appBase references
+    viteContent = viteContent.replace(/\/app\/appName/g, `/app/${appExposedName}`);
     // Update default proxy target
     viteContent = viteContent.replace(
       /const tririgaTarget = process\.env\.VITE_TRIRIGA_PROXY_TARGET \|\| '[^']*'/,
